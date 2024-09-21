@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
   import axios from 'axios';
   definePageMeta({
     layout: "centered",
@@ -19,8 +20,12 @@
   })
 
   async function register(payload: PayloadProps) {
-    const res = await axios.post("/register", payload)
-    console.log("Form Response", res);
+    await axios.post("/register", payload);
+    await axios.post("/login", {
+      email: payload.email,
+      password: payload.password
+    });
+    useRouter().push("/me");
   }
 </script>
 <template>
