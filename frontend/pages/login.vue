@@ -3,6 +3,7 @@
 
   definePageMeta({
     layout: "centered",
+    middleware: ["guest"]
   });
 
   interface LoginProps {
