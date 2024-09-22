@@ -6,12 +6,7 @@
     middleware: ["guest"]
   });
 
-  interface PayloadProps {
-    name: string
-    email: string
-    password: string
-    password_confirmation: string
-  }
+  const { register } = useAuth();
 
   const form = ref({
     name: "",
@@ -20,14 +15,7 @@
     password_confirmation: ""
   })
 
-  async function register(payload: PayloadProps) {
-    await axios.post("/register", payload);
-    await axios.post("/login", {
-      email: payload.email,
-      password: payload.password
-    });
-    useRouter().push("/me");
-  }
+  
 </script>
 <template>
   <div class="register">

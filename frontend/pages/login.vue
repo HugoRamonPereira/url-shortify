@@ -1,25 +1,16 @@
 <script setup lang="ts">
-  import axios from 'axios';
 
   definePageMeta({
     layout: "centered",
     middleware: ["guest"]
   });
 
-  interface LoginProps {
-    email: string;
-    password: string;
-  };
+  const { login } = useAuth();
 
   const form = ref({
     email: "",
     password: ""
   });
-
-  async function login(payload: LoginProps) {
-    await axios.post("/login", payload);
-    useRouter().push("/me");
-  };
 
 </script>
 <template>
